@@ -6,6 +6,7 @@ import {
   Collapse,
   Row,
   Col,
+  Dropdown,
   DropdownToggle,
   DropdownMenu,
   Header,
@@ -23,48 +24,10 @@ import {
   NavItem,
   NavLink,
   HeaderBrand,
-  UncontrolledDropdown,
   MegamenuItem,
   MegamenuHighlightColumn
 } from 'design-react-kit';
 
-const SlimHeaderFullResponsive = ({ }) => {
-  return (
-    <Header type='slim'>
-      <HeaderContent>
-        <HeaderBrand>Ente appartenenza</HeaderBrand>
-        <HeaderRightZone>
-          <UncontrolledDropdown nav tag='div'>
-            <DropdownToggle nav caret role='button'>
-              ITA
-              <Icon icon='it-expand' />
-            </DropdownToggle>
-            <DropdownMenu>
-              <Row>
-                <Col size='12'>
-                  <LinkList>
-                    <LinkListItem inDropdown href='#'>
-                      <span>ITA</span>
-                    </LinkListItem>
-                    <LinkListItem inDropdown href='#'>
-                      <span>ENG</span>
-                    </LinkListItem>
-                  </LinkList>
-                </Col>
-              </Row>
-            </DropdownMenu>
-          </UncontrolledDropdown>
-          <Button color='primary' icon href='#'>
-            <span className='rounded-icon'>
-              <Icon color='primary' icon='it-user' />
-            </span>
-            <span className='d-none d-lg-block'>Accedi all&#39;area personale</span>
-          </Button>
-        </HeaderRightZone>
-      </HeaderContent>
-    </Header>
-  );
-};
 
 // eslint rule has to be disable for few lines here as Storybook addons will go in error
 // if PropTypes are declared in these components
@@ -93,10 +56,9 @@ export class SlimHeader extends Component {
             </Collapse>
           </HeaderLinkZone>
           <HeaderRightZone>
-            <UncontrolledDropdown nav tag='div'>
-              <DropdownToggle nav caret role='button'>
+            <Dropdown inNavbar>
+              <DropdownToggle inNavbar caret>
                 ITA
-                <Icon icon='it-expand' />
               </DropdownToggle>
               <DropdownMenu>
                 <Row>
@@ -112,7 +74,7 @@ export class SlimHeader extends Component {
                   </Col>
                 </Row>
               </DropdownMenu>
-            </UncontrolledDropdown>
+            </Dropdown>
             <div className='it-access-top-wrapper'>
               <Button color='primary' size='sm'>
                 Accedi
@@ -171,7 +133,7 @@ export class NavHeader extends Component {
     const isOpen = !this.state.collapsed;
     return (
       // eslint-disable-next-line react/prop-types
-      <Header type='navbar'>
+      <Header type='navbar' theme={this.props.theme}>
         <HeaderContent expand='lg' megamenu>
           <HeaderToggler
             onClick={() => this.setState({ collapsed: isOpen })}
@@ -195,10 +157,9 @@ export class NavHeader extends Component {
                     Link 2
                   </NavLink>
                 </NavItem>
-                <UncontrolledDropdown nav tag='li' inNavbar>
-                  <DropdownToggle nav caret role='button'>
+                <Dropdown inNavbar tag='li'>
+                  <DropdownToggle inNavbar caret>
                     <span>Menu Dropdown</span>
-                    <Icon icon='it-expand' size='xs' />
                   </DropdownToggle>
                   <DropdownMenu>
                     <LinkList>
@@ -216,8 +177,8 @@ export class NavHeader extends Component {
                       </LinkListItem>
                     </LinkList>
                   </DropdownMenu>
-                </UncontrolledDropdown>
-                <MegamenuItem itemName='Megamenu con Immagine e Descrizione'>
+                </Dropdown>
+                <MegamenuItem itemName='Megamenu completo'>
                   <Row>
                     <MegamenuHighlightColumn xs='12' lg='4' description>
                       <div className='ratio ratio-21x9 lightgrey-bg-a1 mb-4 rounded'>
@@ -284,13 +245,13 @@ export class NavHeader extends Component {
   }
 }
 
-const CompleteHeader = ({}) => {
+const CompleteHeader = () => {
   return (
     <Headers sticky={true}>
-      <SlimHeader/>
+      <SlimHeader />
       <div className='it-nav-wrapper'>
         <CenterHeader />
-        <NavHeader />
+        <NavHeader/>
       </div>
     </Headers>
   );

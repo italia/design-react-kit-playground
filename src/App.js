@@ -10,9 +10,9 @@ function App() {
   return (
     <div>
       <CompleteHeader></CompleteHeader>
-      <div class="container my-4">
+      <div className="container my-4">
         <h3>Form di esempio con validazione</h3>
-        <div class="my-4">
+        <div className="my-4">
           <CompleteValidationForm></CompleteValidationForm>
         </div>
       </div>

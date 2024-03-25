@@ -16,7 +16,7 @@ La pagina verrà ricaricata quando apporti modifiche. Potresti anche vedere even
 
 ### `npm run build`
 
-Compila l'app per la produzione nella cartella "build".
+Compila l'app per la produzione nella cartella "dist".
 La build è minimizzata e i nomi dei file includono gli hash.
 La tua app è pronta per essere distribuita!
 
